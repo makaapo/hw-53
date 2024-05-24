@@ -3,13 +3,14 @@ import React from 'react';
 interface Props {
   id: string;
   text: string;
+  onDeleteTask: (id: string) => void;
 }
 
-const Task: React.FC<Props> = ({id, text}) => {
+const Task: React.FC<Props> = ({id, text, onDeleteTask}) => {
   return (
     <div className="addedTask">
       <span>{text}</span>
-      <button onClick={() => (id)}>Delete</button>
+      <button onClick={() => onDeleteTask(id)}>Delete</button>
     </div>
   );
 };

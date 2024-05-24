@@ -21,13 +21,17 @@ const App: React.FC = () => {
   };
 
 
+  const deleteTask = (taskId: string) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
+
   return (
     <div>
       <AddTaskForm onSubmit={addTask} />
       {tasks.length > 0 && (
         <div className="tasks">
           {tasks.map((task) => (
-            <Task key={task.id} id={task.id} text={task.text} />
+            <Task key={task.id} id={task.id} text={task.text} onDeleteTask={deleteTask} />
           ))}
         </div>
       )}
